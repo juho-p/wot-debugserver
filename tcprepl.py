@@ -13,31 +13,38 @@ def run_repl():
     s.listen(1)
 
 
-    def repl(__f, once=False):
+    def repl(filestream, once=False):
         global write_client
 
         def echo(s):
-            __f.write(str(s))
-            __f.write(newline)
-            __f.flush()
+            filestream.write(str(s))
+            filestream.write(newline)
+            filestream.flush()
         write_client = echo
         def doc(o):
             for line in o.__doc__.splitlines():
                 echo(line)
 
-        for _line in __f:
-            _line = _line.strip()
-            if _line == 'QUIT':
+        local_vars = {'echo': echo, 'doc': doc}
+
+        for line in filestream:
+            line = line.strip()
+            print 'line:', line
+            if line == 'QUIT':
                 break
             try:
-                if len(_line) > 2:
-                    if _line[0:2] == 'p ':
-                        __f.write(repr(eval(_line[2:].strip())) + '\r\n')
-                        __f.flush()
+                if len(line) > 2:
+                    if line[0:2] == 'p ':
+                        res = eval(line[2:].strip(), globals(), local_vars)
+                        filestream.write(repr(res) + '\r\n')
+                        filestream.flush()
                     else:
-                        exec _line in globals(), locals()
+                        exec line in globals(), local_vars
             except Exception, e:
                 echo(e)
+            locs = local_vars.get('__READYMSG', None)
+            if locs is not None:
+                echo(locs)
             if once:
                 break
 
