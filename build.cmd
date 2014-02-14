@@ -1,2 +1,2 @@
 del *.pyc
-c:\python26\python.exe -m compileall .
+c:\python27\python.exe -m compileall .
