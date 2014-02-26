@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 import socket
-import threading
 import readline
 
 HOST = '127.0.0.1'
