@@ -77,6 +77,5 @@ Notes:
 * To echo something to client, use echo function that is visible to REPL
 * If you use print to write something to STDOUT, it is written to python.log-file
 * To stop the server, type `QUIT`
-* If the server is stopped, you need to restart WOT to use the console again
 * If you have problems, see what's in python.log file that's created in WOT directory
 
