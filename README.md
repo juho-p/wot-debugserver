@@ -78,7 +78,5 @@ Notes:
 * If you use print to write something to STDOUT, it is written to python.log-file
 * To stop the server, type `QUIT`
 * If the server is stopped, you need to restart WOT to use the console again
-* If you connect to server and leave console open, and then try to exit the game, the game hangs until you stop the client (like using QUIT command)
-    * This will maybe be fixed in some distant future
 * If you have problems, see what's in python.log file that's created in WOT directory
 

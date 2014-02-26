@@ -21,7 +21,6 @@ def set_stopper():
     from gui.Scaleform.Flash import Flash
     from gui.mods.xpm import RegisterEvent
     def close(*args, **kws):
-        log('close socket')
         tcprepl.closesocket()
     RegisterEvent(Flash, 'beforeDelete', close)
 
@@ -31,10 +30,8 @@ if run:
     try:
         import threading
         thread = threading.Thread(target=run_server, args=())
+        thread.setDaemon(True)
         thread.start()
-
-        import BigWorld
-        BigWorld.callback(1, set_stopper)
 
         log('thread started..')
     except:

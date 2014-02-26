@@ -1,13 +1,11 @@
 write_client = None
 
 import socket
-g_sock = None
 
 PORT = 2222
 
 def run_repl():
     global write_client
-    global g_sock
 
     newline = '\r\n'
 
@@ -54,7 +52,6 @@ def run_repl():
 
     try:
         conn, addr = s.accept()
-        g_sock = conn
         f = conn.makefile()
         repl(f)
     except Exception, e:
@@ -65,13 +62,5 @@ def run_repl():
     conn.close()
     s.close()
 
-def closesocket():
-    if g_sock is None:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect(('127.0.0.1', PORT))
-        s.send('QUIT\r\n')
-        s.close()
-
 if __name__ == '__main__':
-    print 'run repl..'
     run_repl()
