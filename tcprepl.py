@@ -36,11 +36,11 @@ def run_repl():
             try:
                 if len(line) > 2:
                     if line[0:2] == 'p ':
-                        res = eval(line[2:].strip(), globals(), local_vars)
+                        res = eval(line[2:].strip(), local_vars)
                         filestream.write(repr(res) + '\r\n')
                         filestream.flush()
                     else:
-                        exec line in globals(), local_vars
+                        exec line in local_vars
             except Exception, e:
                 import traceback
                 echo(traceback.format_exc())
