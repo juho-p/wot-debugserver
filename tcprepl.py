@@ -5,6 +5,9 @@ import socket
 PORT = 2222
 
 def run_repl():
+    '''
+    Run debug server until connection is closed
+    '''
     global write_client
 
     newline = '\r\n'
@@ -49,18 +52,18 @@ def run_repl():
                 echo(locs)
             if once:
                 break
+        write_client = None
 
+    conn = f = None
     try:
         conn, addr = s.accept()
         f = conn.makefile()
         repl(f)
-    except Exception, e:
-        print e
-        import traceback
-        traceback.print_stack()
-    write_client = None
-    conn.close()
-    s.close()
+    finally:
+        s.close()
+        if conn != None:
+            conn.close()
+            f.close()
 
 if __name__ == '__main__':
     run_repl()

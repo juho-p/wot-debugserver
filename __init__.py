@@ -14,15 +14,15 @@ def log(text):
 
 def run_server():
     log('run server...')
-    tcprepl.run_repl()
-    log('** server stopped!')
-
-def set_stopper():
-    from gui.Scaleform.Flash import Flash
-    from gui.mods.xpm import RegisterEvent
-    def close(*args, **kws):
-        tcprepl.closesocket()
-    RegisterEvent(Flash, 'beforeDelete', close)
+    try:
+        while True:
+            tcprepl.run_repl()
+            log('REPL stopped, restarting...')
+    except:
+        log('* Crashed *')
+        import traceback
+        traceback.print_exc()
+    log('Server stopped!')
 
 if run:
     log('starting..')
