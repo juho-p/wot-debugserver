@@ -47,9 +47,9 @@ def run_repl():
             except Exception, e:
                 import traceback
                 echo(traceback.format_exc())
-            locs = local_vars.get('__READYMSG', None)
-            if locs is not None:
-                echo(locs)
+            readymsg = local_vars.get('__READYMSG', None)
+            if readymsg is not None:
+                echo(readymsg)
             if once:
                 break
         write_client = None
