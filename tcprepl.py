@@ -33,7 +33,6 @@ def run_repl():
 
         for line in filestream:
             line = line.strip()
-            #print 'line:', line
             if line == 'QUIT':
                 break
             try:
