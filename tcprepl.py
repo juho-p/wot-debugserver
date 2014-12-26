@@ -36,13 +36,14 @@ def run_repl():
             if line == 'QUIT':
                 break
             try:
-                if len(line) > 2:
-                    if line[0:2] == 'p ':
-                        res = eval(line[2:].strip(), local_vars)
-                        filestream.write(repr(res) + '\r\n')
-                        filestream.flush()
-                    else:
-                        exec line in local_vars
+                try:
+                    try_exec = False
+                    res = eval(line, local_vars)
+                    echo(res)
+                except SyntaxError:
+                    try_exec = True
+                if try_exec:
+                    exec line in local_vars
             except Exception, e:
                 import traceback
                 echo(traceback.format_exc())
