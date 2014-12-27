@@ -26,11 +26,8 @@ def run_repl():
             filestream.write(newline)
             filestream.flush()
         write_client = echo
-        def doc(o):
-            for line in o.__doc__.splitlines():
-                echo(line)
 
-        local_vars = {'echo': echo, 'doc': doc, 'wotdbg': wotdbg}
+        local_vars = {'echo': echo, 'wotdbg': wotdbg}
 
         for line in filestream:
             line = line.strip()
