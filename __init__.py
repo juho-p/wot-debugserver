@@ -1,4 +1,4 @@
-XPM_MOD_VERSION = '1.2.0'
+XPM_MOD_VERSION = '1.2.1'
 XPM_MOD_URL = 'https://github.com/juho-p/wot-debugserver'
 XPM_MOD_UPDATE_URL = ''
 XPM_GAME_VERSIONS = ['0.9.5']
