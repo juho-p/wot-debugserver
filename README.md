@@ -73,7 +73,7 @@ game is running
 Notes:
 
 * To execute python code, just type it in the console
-* To display what the python code evaluates to, type `p some.code.here()`
+* If you type an expression, the evaluated result will get printed
 * To echo something to client, use echo function that is visible to REPL
 * If you use print to write something to STDOUT, it is written to python.log-file
 * To stop the server, type `QUIT`
