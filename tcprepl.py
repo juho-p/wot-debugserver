@@ -19,6 +19,7 @@ def run_repl():
 
     def repl(filestream, once=False):
         global write_client
+        import wotdbg
 
         def echo(s):
             filestream.write(str(s))
@@ -29,7 +30,7 @@ def run_repl():
             for line in o.__doc__.splitlines():
                 echo(line)
 
-        local_vars = {'echo': echo, 'doc': doc}
+        local_vars = {'echo': echo, 'doc': doc, 'wotdbg': wotdbg}
 
         for line in filestream:
             line = line.strip()
