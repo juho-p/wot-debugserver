@@ -1,7 +1,7 @@
-XPM_MOD_VERSION = '1.2.1'
-XPM_MOD_URL = 'https://github.com/juho-p/wot-debugserver'
-XPM_MOD_UPDATE_URL = ''
-XPM_GAME_VERSIONS = ['0.9.5']
+XFW_MOD_VERSION = '1.3.0'
+XFW_MOD_URL = ''
+XFW_MOD_UPDATE_URL = ''
+XFW_GAME_VERSIONS = ['0.9.6']
 
 run = True
 
