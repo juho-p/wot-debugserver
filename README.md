@@ -12,22 +12,25 @@ Getting started
 Step 1: Setup server
 --------------------
 
-First, compile .py files to .pyc files using either build.cmd (for Windows
-users) or build.sh (Linux and Cygwin users)
+It is easiest to have XVM installed. If you don't then see the note below.
 
-Then, if you have XVM installed:
+You need to have required `.pyc` files in
+`res_mods/mods/packages/wot-debugserver/python/` -folder. Compile all `.py`
+files using build.cmd script and copy resulting files to that folder.
 
-Copy `__init__.pyc` and `tcprepl.pyc` under
-`res_mods/0.8.11/scripts/client/gui/mods/replserver`
-(create the replserver-folder under mods-folder)
+If you have Cygwin and git and python2.7 installed (or are using Linux or some
+other environment where you have bash and git), you can use following commands:
 
-If you don't have XVM installed, then you should download xvm mod and at least copy following files from it to your `res_mods`-folder:
+    cd /path/to/World_of_Tanks/
+    cd res_mods/mods/packages
+    # I clone to replserver because it sounds nicer than wot-debugserver
+    git clone git clone https://github.com/juho-p/wot-debugserver.git replserver
+    cd replserver
+    python -m compileall .
 
-  * `scripts/client/gui/scaleform/locale/__init__.pyc`
-  * `scripts/client/gui/mods/__init__.pyc`
-  * `scripts/client/gui/mods/xpm.pyc`
-
-These files ensure that the mod loads correctly
+NOTE: Everything is easier if you have XVM installed. If not, then you have to
+find another way to run the REPL. Basically you have to compile python files to
+pyc-files and somehow import the resulting module during WOT-startup
 
 Step 2: Start game
 ------------------
@@ -60,13 +63,13 @@ Example usage
 Best way to try this is to start some replay and try different things when the
 game is running
 
-    > p 'hello'
+    > 'hello'
     'hello'
     > import messenger
     > gui = messenger.MessengerEntry.g_instance.gui
     > gui.addClientMessage('hello gui', True) # try this when in battle
     > import BigWorld
-    > p BigWorld.player().name # displays player nickname
+    > BigWorld.player().name # displays player nickname
     'awesome-mod-creator'
     > QUIT
 
