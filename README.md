@@ -12,7 +12,8 @@ Getting started
 Step 1: Setup server
 --------------------
 
-It is easiest to have XVM installed. If you don't then see the note below.
+If you have XVM installed, you only need to execute steps below. If not, see
+the note below.
 
 You need to have required `.pyc` files in
 `res_mods/mods/packages/wot-debugserver/python/` -folder. Compile all `.py`
@@ -24,13 +25,16 @@ other environment where you have bash and git), you can use following commands:
     cd /path/to/World_of_Tanks/
     cd res_mods/mods/packages
     # I clone to replserver because it sounds nicer than wot-debugserver
-    git clone git clone https://github.com/juho-p/wot-debugserver.git replserver
+    git clone https://github.com/juho-p/wot-debugserver.git replserver
     cd replserver
     python -m compileall .
 
-NOTE: Everything is easier if you have XVM installed. If not, then you have to
-find another way to run the REPL. Basically you have to compile python files to
-pyc-files and somehow import the resulting module during WOT-startup
+NOTE: If you don't have XVM installed, you need to use the mod loader that is
+included in this repository. It loads modules that are in
+`res_mods/mods/packages/*/python` folders, similar to what XVM does. To install
+it, simply run `install_loader.sh` script under the `loader` folder (in the
+bash shell), or manually compile the `mod_.py` file and copy the .pyc into
+`res_mods/[wot version]/scripts/client/gui/mods/` folder.
 
 Step 2: Start game
 ------------------
